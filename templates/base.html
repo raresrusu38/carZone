@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    {% include 'includes/head.html' %}
+
+    <body>
+        <div class="page_loader"></div>
+
+        {% include 'includes/top_header.html' %}
+
+        {% include 'includes/main_header.html' %}
+
+        {% block content %} {% endblock content %}
+
+        {% include 'includes/scripts.html' %}
+    </body>
+
+</html>
