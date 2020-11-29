@@ -1,9 +1,18 @@
 from django.contrib import admin
 from cars.models import *
+from django.utils.html import format_html
 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('car_title',)
+    def thumbnail(self, object):
+        return format_html('<img src="{}" width="40" style="border-radius:10px" />'.format(object.car_photo.url))
+
+    thumbnail.short_description = 'Car Image'
+    list_display = ('id', 'thumbnail', 'car_title', 'city', 'color', 'model', 'year', 'body_style', 'fuel_type', 'is_featured')
+    list_display_links = ('id', 'car_title',)
+    list_editable = ('is_featured',)
+    search_fields = ('id', 'car_title', 'city', 'model', 'body-style', 'fuel_type')
+    list_filter = ('city', 'model', 'body_style', 'fuel_type')
 
 
 admin.site.register(Car, CarAdmin)
