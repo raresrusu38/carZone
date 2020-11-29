@@ -6,4 +6,5 @@ app_name = "cars"
 
 urlpatterns = [
     path('', views.cars, name="cars"),
+    path('<int:pk>/<slug:slug>/', views.car_detail, name="car-detail"),
 ]
