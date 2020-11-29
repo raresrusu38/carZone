@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from ckeditor.fields import RichTextField
 from multiselectfield import MultiSelectField
+from django.template.defaultfilters import slugify
 
 class Car(models.Model):
 
@@ -88,6 +89,7 @@ class Car(models.Model):
     )
 
     car_title = models.CharField(max_length=255)
+    slug = models.SlugField(default='slug')
     state = models.CharField(choices=state_choice, max_length=100)
     city = models.CharField(max_length=100)
     color = models.CharField(max_length=100)
@@ -119,6 +121,10 @@ class Car(models.Model):
 
     def __str__(self):
         return self.car_title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.car_title)
+        super(Car, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Car'
