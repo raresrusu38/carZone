@@ -3,6 +3,8 @@ from pages.views import *
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login
+from django.contrib import auth
+from django.contrib.auth import authenticate
 
 
 def register(request):
@@ -38,10 +40,27 @@ def register(request):
 
 
 def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            auth_login(request, user)
+            messages.success(request, 'You are now logged in')
+            return redirect('accounts:dashboard')
+        else:
+            messages.error(request, 'Invalid login credentials')
+            return redirect('accounts:login')
     return render(request, 'accounts/login.html')
 
 
 def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'You are successfully logged out')
+        return redirect('pages:home')
     return redirect('pages:home')
 
 
