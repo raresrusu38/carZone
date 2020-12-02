@@ -12,7 +12,7 @@ def home(request):
     year_search = Car.objects.order_by().values('year').distinct()
     body_style_search = Car.objects.order_by().values('body_style').distinct()
     
-    data = {
+    context = {
         'teams' : teams,
         'featured_cars' : featured_cars,
         'latest_cars' : latest_cars,
@@ -21,7 +21,7 @@ def home(request):
         'year_search': year_search,
         'body_style_search': body_style_search,
     }
-    return render(request, 'pages/home.html', data)
+    return render(request, 'pages/home.html', context)
 
 
 def about(request):

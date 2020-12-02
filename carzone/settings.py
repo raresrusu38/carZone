@@ -16,6 +16,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'accounts:dashboard'
+
 
 # Application definition
 
@@ -32,6 +34,14 @@ INSTALLED_APPS = [
     'ckeditor',
     'multiselectfield',
     'django.contrib.humanize',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # Providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +139,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+SITE_ID = 1
