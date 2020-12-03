@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login
 from django.contrib import auth
 from django.contrib.auth import authenticate
+from contacts.models import *
+from django.contrib.auth.decorators import login_required
 
 
 def register(request):
@@ -62,6 +64,12 @@ def logout(request):
         return redirect('pages:home')
     return redirect('pages:home')
 
-
+@login_required(login_url='accounts:login')
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+    user_inquiry = Contact.objects.order_by('-create_date').filter(user_id=request.user.id)
+
+    context = {
+        'inquiries' : user_inquiry,
+    }
+
+    return render(request, 'accounts/dashboard.html', context)
