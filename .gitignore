@@ -133,3 +133,5 @@ dmypy.json
 
 # Static files
 /static
+
+/carZone/settings_local.py
