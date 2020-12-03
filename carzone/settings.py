@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5gg%-i!k8cpn(vd7oloy$u14l3y9d$_bsq45s#iyvgux=$flkr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['desolate-springs-58760.herokuapp.com',]
 
