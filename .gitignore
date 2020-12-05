@@ -135,4 +135,4 @@ dmypy.json
 
 /carZone/settings_local.py
 /carZone/settings_heroku.py
-/carZone/settings.py
+#/carZone/settings.py

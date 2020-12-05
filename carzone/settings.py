@@ -15,7 +15,7 @@ SECRET_KEY = '5gg%-i!k8cpn(vd7oloy$u14l3y9d$_bsq45s#iyvgux=$flkr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['desolate-springs-58760.herokuapp.com',]
+ALLOWED_HOSTS = ['desolate-springs-58760.herokuapp.com', ]
 
 LOGIN_REDIRECT_URL = 'accounts:dashboard'
 
@@ -93,7 +93,8 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 #     }
 # }
 
-DATABASES = {'default': dj_database_url.config(default='postgres://postgres:anahasmere@localhost/car_zone')}
+DATABASES = {'default': dj_database_url.config(
+    default='postgres://postgres:anahasmere@localhost/car_zone')}
 
 
 # Password validation
